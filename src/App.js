@@ -7,13 +7,30 @@ import {
 import './App.css';
 
 // URL parameters are a methods by which we can extract parameters from our URL
-const App = () => (
+// to convert /page into a parameters called page add a colon before the page value
+// when address bar is changed match.params.page will display that page name
+// i.e. localhost:3000/react would render PAGE: react
+// at the root URL nothing is rendered, because this page value in order for the
+// Route to be a match must be present
+// Appending a question mark to the end of the path string will make that requirement
+// optional -- without the optional page param provided, Home is rendered instead
+// subdirectories can be rendered i.e. localhost:3000/react/router
+// the path string can be modified to change from subdirectories (change slash to dash)
+
+const App = (props) => (
   <Router>
     <div>
-      <Links />
-      <Route exact path="/" render={() => <h1>Home</h1>} />
-      <Route path="/about" render={() => <h1>About</h1>} />
-      <Route path="/contact" render={() => <h1>Contact</h1>} />
+      { /* <Route path="/page" render={() => ( */ }
+      { /* <Route path="/:page" render={({match}) => ( */ }
+      { /* <Route path="/:page?" render={({match}) => ( */ }
+      { /* <Route path="/:page?/:subpage?" render={({match}) => ( */ }
+
+      <Route path="/:page?-:subpage?" render={({match}) => (
+        <h1>
+          PAGE: {match.params.page || 'Home'}<br />
+          SUBPAGE: {match.params.subpage}
+        </h1>
+      )} />
     </div>
   </Router>
 )
