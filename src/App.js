@@ -8,34 +8,63 @@ import {
 
 import './App.css';
 
+
 const Links = () => (
   <nav>
-    <Link to="/">Home</Link>
+    <Link to="/home">Home</Link>
     <Link to="/about">About</Link>
+    <Header />
+    <Content />
   </nav>
 )
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <Links />
-          <Switch>
-            <Route exact path="/" render={() => <h1>Home</h1>} />
-            <Route path="/about" render={() => <h1>About</h1>} />
-            <Route path="/contact" render={() => <h1>Contact</h1>} />
-            <Route path="/:id"
-              render={({match}) => <h1>Item: {match.params.id}</h1>} />
-            <Route render={() => <h1>Page Not Found</h1>} />
-          </Switch>
-        </div>
-      </Router>
-    )
-  }
-}
+
+const App = (props) => (
+  <Router>
+    <div>
+      <Links />
+    </div>
+  </Router>
+)
+
 
 export default App;
+
+
+// In react router 4 Routes are simply Components
+// Break Routes up and Render them individually or nest them
+// const Links = () => (
+//   <nav>
+//     <Link to="/home">Home</Link>
+//     <Link to="/about">About</Link>
+//     <Header />
+//     <Content />
+//   </nav>
+// )
+//
+// const Header = ({match}) => (
+//   <div className="header">
+//     <Route path="/:page"
+//       render={({match}) => (
+//         <h1>{match.params.page} header</h1>)} />
+//   </div>
+// )
+//
+// const Content = ({match}) => (
+//   <div className="content">
+//     <Route path="/:page"
+//       render={({match}) => (
+//         <p>{match.params.page} content</p>)} />
+//   </div>
+// )
+//
+// const App = (props) => (
+//   <Router>
+//     <div>
+//       <Links />
+//     </div>
+//   </Router>
+// )
 
 
 // A Route without a path will always render
@@ -43,33 +72,33 @@ export default App;
 // render the first route that matches
 // to create dynamic routes using a colon makes React Router match routes
 // starting at the colon up to the next /, ?, or #
-const Links = () => (
-  <nav>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    <Link to="/contact">Contact</Link>
-  </nav>
-)
-
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <Links />
-          <Switch>
-            <Route exact path="/" render={() => <h1>Home</h1>} />
-            <Route path="/about" render={() => <h1>About</h1>} />
-            <Route path="/contact" render={() => <h1>Contact</h1>} />
-            <Route path="/:id"
-              render={({match}) => <h1>Item: {match.params.id}</h1>} />
-            <Route render={() => <h1>Page Not Found</h1>} />
-          </Switch>
-        </div>
-      </Router>
-    )
-  }
-}
+// const Links = () => (
+//   <nav>
+//     <Link to="/">Home</Link>
+//     <Link to="/about">About</Link>
+//     <Link to="/contact">Contact</Link>
+//   </nav>
+// )
+//
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <Router>
+//         <div>
+//           <Links />
+//           <Switch>
+//             <Route exact path="/" render={() => <h1>Home</h1>} />
+//             <Route path="/about" render={() => <h1>About</h1>} />
+//             <Route path="/contact" render={() => <h1>Contact</h1>} />
+//             <Route path="/:id"
+//               render={({match}) => <h1>Item: {match.params.id}</h1>} />
+//             <Route render={() => <h1>Page Not Found</h1>} />
+//           </Switch>
+//         </div>
+//       </Router>
+//     )
+//   }
+// }
 
 
 // When working with query strings in React Router query strings are appended
