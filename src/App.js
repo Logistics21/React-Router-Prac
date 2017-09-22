@@ -2,20 +2,40 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Link
 } from 'react-router-dom';
 
 import './App.css';
 
+
+// When working with query strings in React Router query strings are appended
+// to the path using a question mark
+// in the location data the search field key will point the query string
+// including the question mark
+// when using it in the destructured object the search key must be specified
+// to the query string and MUST NOT INCLUDE the question mark
+// URLSearchParams (Chrome specific) can be used to parse the query string
+// There are a number of react npm that also do this for you
+
+const Links = () => (
+  <nav>
+    <Link to="/?id=123">InLine</Link>
+    <Link to={{pathname: '/', search: 'id=456'}}>Object</Link>
+  </nav>
+)
+
+
 const App = (props) => (
   <Router>
     <div>
-      <Route
-        path="/:a(\d{2}-\d{2}-\d{4}):b(\.[a-z]+)"
-        render={({match}) => (
-        <h1>
-          paramA: {match.params.a}<br />
-          paramB: {match.params.b}
-        </h1>
+      <Links />
+      <Route path="/" render={({match, location}) => (
+        <div>
+          <p>root</p>
+          <p>{JSON.stringify(match)}</p>
+          <p>{JSON.stringify(location)}</p>
+          <p>{new URLSearchParams(location.search).get('id')}</p>
+        </div>
       )} />
     </div>
   </Router>
