@@ -2,10 +2,74 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom';
 
 import './App.css';
+
+const Links = () => (
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to="/about">About</Link>
+  </nav>
+)
+
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Links />
+          <Switch>
+            <Route exact path="/" render={() => <h1>Home</h1>} />
+            <Route path="/about" render={() => <h1>About</h1>} />
+            <Route path="/contact" render={() => <h1>Contact</h1>} />
+            <Route path="/:id"
+              render={({match}) => <h1>Item: {match.params.id}</h1>} />
+            <Route render={() => <h1>Page Not Found</h1>} />
+          </Switch>
+        </div>
+      </Router>
+    )
+  }
+}
+
+export default App;
+
+
+// A Route without a path will always render
+// The Switch Component wraps it's children Route components and will only
+// render the first route that matches
+// to create dynamic routes using a colon makes React Router match routes
+// starting at the colon up to the next /, ?, or #
+const Links = () => (
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to="/about">About</Link>
+    <Link to="/contact">Contact</Link>
+  </nav>
+)
+
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Links />
+          <Switch>
+            <Route exact path="/" render={() => <h1>Home</h1>} />
+            <Route path="/about" render={() => <h1>About</h1>} />
+            <Route path="/contact" render={() => <h1>Contact</h1>} />
+            <Route path="/:id"
+              render={({match}) => <h1>Item: {match.params.id}</h1>} />
+            <Route render={() => <h1>Page Not Found</h1>} />
+          </Switch>
+        </div>
+      </Router>
+    )
+  }
+}
 
 
 // When working with query strings in React Router query strings are appended
@@ -17,31 +81,29 @@ import './App.css';
 // URLSearchParams (Chrome specific) can be used to parse the query string
 // There are a number of react npm that also do this for you
 
-const Links = () => (
-  <nav>
-    <Link to="/?id=123">InLine</Link>
-    <Link to={{pathname: '/', search: 'id=456'}}>Object</Link>
-  </nav>
-)
-
-
-const App = (props) => (
-  <Router>
-    <div>
-      <Links />
-      <Route path="/" render={({match, location}) => (
-        <div>
-          <p>root</p>
-          <p>{JSON.stringify(match)}</p>
-          <p>{JSON.stringify(location)}</p>
-          <p>{new URLSearchParams(location.search).get('id')}</p>
-        </div>
-      )} />
-    </div>
-  </Router>
-)
-
-export default App;
+// const Links = () => (
+//   <nav>
+//     <Link to="/?id=123">InLine</Link>
+//     <Link to={{pathname: '/', search: 'id=456'}}>Object</Link>
+//   </nav>
+// )
+//
+//
+// const App = (props) => (
+//   <Router>
+//     <div>
+//       <Links />
+//       <Route path="/" render={({match, location}) => (
+//         <div>
+//           <p>root</p>
+//           <p>{JSON.stringify(match)}</p>
+//           <p>{JSON.stringify(location)}</p>
+//           <p>{new URLSearchParams(location.search).get('id')}</p>
+//         </div>
+//       )} />
+//     </div>
+//   </Router>
+// )
 
 
 // Regular expressions allow for precise validations
