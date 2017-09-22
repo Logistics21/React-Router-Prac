@@ -6,6 +6,43 @@ import {
 
 import './App.css';
 
+const App = (props) => (
+  <Router>
+    <div>
+      <Route
+        path="/:a(\d{2}-\d{2}-\d{4}):b(\.[a-z]+)"
+        render={({match}) => (
+        <h1>
+          paramA: {match.params.a}<br />
+          paramB: {match.params.b}
+        </h1>
+      )} />
+    </div>
+  </Router>
+)
+
+export default App;
+
+
+// Regular expressions allow for precise validations
+// Below a date-like format followed by a period followed by any number of
+//characters between a-z
+// const App = (props) => (
+//   <Router>
+//     <div>
+//       <Route
+//         path="/:a(\d{2}-\d{2}-\d{4}):b(\.[a-z]+)"
+//         render={({match}) => (
+//         <h1>
+//           paramA: {match.params.a}<br />
+//           paramB: {match.params.b}
+//         </h1>
+//       )} />
+//     </div>
+//   </Router>
+// )
+
+
 // URL parameters are a methods by which we can extract parameters from our URL
 // to convert /page into a parameters called page add a colon before the page value
 // when address bar is changed match.params.page will display that page name
@@ -17,25 +54,25 @@ import './App.css';
 // subdirectories can be rendered i.e. localhost:3000/react/router
 // the path string can be modified to change from subdirectories (change slash to dash)
 
-const App = (props) => (
-  <Router>
-    <div>
-      { /* <Route path="/page" render={() => ( */ }
-      { /* <Route path="/:page" render={({match}) => ( */ }
-      { /* <Route path="/:page?" render={({match}) => ( */ }
-      { /* <Route path="/:page?/:subpage?" render={({match}) => ( */ }
-
-      <Route path="/:page?-:subpage?" render={({match}) => (
-        <h1>
-          PAGE: {match.params.page || 'Home'}<br />
-          SUBPAGE: {match.params.subpage}
-        </h1>
-      )} />
-    </div>
-  </Router>
-)
-
-export default App;
+// const App = (props) => (
+//   <Router>
+//     <div>
+//       { /* <Route path="/page" render={() => ( */ }
+//       { /* <Route path="/:page" render={({match}) => ( */ }
+//       { /* <Route path="/:page?" render={({match}) => ( */ }
+//       { /* <Route path="/:page?/:subpage?" render={({match}) => ( */ }
+//
+//       <Route path="/:page?-:subpage?" render={({match}) => (
+//         <h1>
+//           PAGE: {match.params.page || 'Home'}<br />
+//           SUBPAGE: {match.params.subpage}
+//         </h1>
+//       )} />
+//     </div>
+//   </Router>
+// )
+//
+// export default App;
 
 
 // const App = () => (
