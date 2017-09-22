@@ -9,20 +9,26 @@ import {
 import './App.css';
 
 
-const Links = () => (
-  <nav>
-    <Link to="/home">Home</Link>
-    <Link to="/about">About</Link>
-    <Header />
-    <Content />
-  </nav>
+const Home = () => (<h1>Home</h1>)
+const Menu = () => (
+  <div>
+    <h1>Menu</h1>
+    <Link to="/menu/food">Food</Link>
+    <Link to="/menu/drinks">Drinks</Link>
+    <Link to="/menu/sides">Sides</Link>
+    <Route path="/menu/:section"
+      render={({match}) => <h2>{match.params.section}</h2>} />
+  </div>
 )
 
 
 const App = (props) => (
   <Router>
     <div>
-      <Links />
+      <Link to="/">Home</Link>
+      <Link to="/menu">Menu</Link>
+      <Route exact path="/" component={Home} />
+      <Route path="/menu" component={Menu} />
     </div>
   </Router>
 )
