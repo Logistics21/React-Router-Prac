@@ -1,5 +1,60 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+
+import './App.css';
+
+// An Object can also be interlopated into the Link Component
+// the to prop becomes pathname key
+// replace controls browser history -- replaces the previous URL with the
+// newest URL
+const Links = () => (
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to={{pathname: '/about'}}>About</Link>
+    <Link replace to="/contact">Contact</Link>
+  </nav>
+)
+
+const App = () => (
+  <Router>
+    <div>
+      <Links />
+      <Route exact path="/" render={() => <h1>Home</h1>} />
+      <Route path="/about" render={() => <h1>About</h1>} />
+      <Route path="/contact" render={() => <h1>Contact</h1>} />
+    </div>
+  </Router>
+)
+
+export default App;
+
+
+
+// const Home = (props) => {
+//   console.log(props);
+//   return <h1>Home</h1>
+// }
+
+
+// const App = () => (
+//   <Router>
+//     <div>
+//       <Route exact path="/" component={Home} />
+//       { /* <Route strict path="/about/" component={Home} /> */ }
+//       { /* <Route path="/about" component={Home} /> */ }
+//       { /* <Route path="/about" render={() => <h1>About</h1>} /> */ }
+//       <Route
+//         path="/about"
+//         children={({match}) => match && <h1>About</h1>} />
+//
+//     </div>
+//   </Router>
+// )
+
 // console.log(Route);
 // Router Components may only have 1 child element
 // The regular expression engine used by react-router considered
@@ -12,24 +67,3 @@ import { BrowserRouter as Router, Route, } from 'react-router-dom';
 // using the match data pulled from children or render gets passed
 // if that object exists then the route considers the current url a match
 // location
-const Home = (props) => {
-  console.log(props);
-  return <h1>Home</h1>
-}
-
-const App = () => (
-  <Router>
-    <div>
-      <Route exact path="/" component={Home} />
-      { /* <Route strict path="/about/" component={Home} /> */ }
-      { /* <Route path="/about" component={Home} /> */ }
-      { /* <Route path="/about" render={() => <h1>About</h1>} /> */ }
-      <Route
-        path="/about"
-        children={({match}) => match && <h1>About</h1>} />
-
-    </div>
-  </Router>
-)
-
-export default App;
