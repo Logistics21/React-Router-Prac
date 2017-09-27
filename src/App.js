@@ -1,40 +1,76 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  HashRouter,
+  MemoryRouter,
+  StaticRouter,
   Route,
   Link,
-  Switch
+  Switch,
+  Prompt,
+  Redirect
 } from 'react-router-dom';
 
 import './App.css';
 
+// // Redirect must be nested within a switch otherwise it will render
+// // A more common use for Redirect is to override an existing route
+// // now the from can be removed from the redirect
+// // this method also allows you to carry over any params from the prev page
 
-const Home = () => (<h1>Home</h1>)
-const Menu = () => (
-  <div>
-    <h1>Menu</h1>
-    <Link to="/menu/food">Food</Link>
-    <Link to="/menu/drinks">Drinks</Link>
-    <Link to="/menu/sides">Sides</Link>
-    <Route path="/menu/:section"
-      render={({match}) => <h2>{match.params.section}</h2>} />
-  </div>
-)
+// const App = () => (
+//   <Router>
+//     <div>
+//       <Links />
+//         <Route exact path="/" render={() => (<h1>Home</h1>)} />
+//         <Route
+//           path="/new/:str"
+//           render={({match}) => (<h1>New: {match.params.str}</h1>)}
+//           />
+//
+//         <Route path="/old/:str" render={({match}) => (
+//             <Redirect to={`/new/${match.params.str}`} />
+//           )}/>
+//
+//         <Route path="/protected" render={() => (
+//             loggedin
+//             ? <h1>Welcome Logged in User</h1>
+//             : <Redirect to="new/Login" />
+//           )}/>
+//
+//       { /*}<Switch>
+//         <Route exact path="/" render={() => (<h1>Home</h1>)} />
+//         <Route path="/new" render={() => (<h1>New</h1>)} />
+//         <Redirect from="/old" to="/new" />
+//       </Switch> */ }
+//     </div>
+//   </Router>
+// )
 
 
-const App = (props) => (
-  <Router>
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/menu">Menu</Link>
-      <Route exact path="/" component={Home} />
-      <Route path="/menu" component={Menu} />
-    </div>
-  </Router>
-)
-
-
-export default App;
+// const Home = () => (<h1>Home</h1>)
+// const Menu = () => (
+//   <div>
+//     <h1>Menu</h1>
+//     <Link to="/menu/food">Food</Link>
+//     <Link to="/menu/drinks">Drinks</Link>
+//     <Link to="/menu/sides">Sides</Link>
+//     <Route path="/menu/:section"
+//       render={({match}) => <h2>{match.params.section}</h2>} />
+//   </div>
+// )
+//
+//
+// const App = (props) => (
+//   <Router>
+//     <div>
+//       <Link to="/">Home</Link>
+//       <Link to="/menu">Menu</Link>
+//       <Route exact path="/" component={Home} />
+//       <Route path="/menu" component={Menu} />
+//     </div>
+//   </Router>
+// )
 
 
 // In react router 4 Routes are simply Components
