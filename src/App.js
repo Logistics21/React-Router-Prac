@@ -13,6 +13,30 @@ import {
 
 import './App.css';
 
+const LinksRoutes = () => (
+  <div>
+    <Link to="/">Home</Link>
+    <Link to="/about">About</Link>
+    <Route exact path="/" render={() => <h1>Home</h1>}/>
+    <Route path="/about" render={() => <h1>About</h1>}/>
+  </div>
+)
+
+// BrowserRouter is used in an environment that supports the HTML5 history API
+// forceRefresh is meant to return a boolean value
+// if forceRefresh returned false
+
+const forceRefresh = () => {
+  console.log(new Date());
+  return false;
+}
+
+
+const BrowserRouterApp = () => (
+  <Router forceRefresh={forceRefresh()}>
+    <LinksRoutes />
+  </Router>
+)
 
 export default StaticRouterApp;
 
