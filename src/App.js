@@ -13,6 +13,57 @@ import {
 
 import './App.css';
 
+
+export default StaticRouterApp;
+
+
+// A common use case for intercepting a Route change is when that route change
+// would cause the user to lose some data
+// Prompt takes in two props message
+// const Home = () => (<h1>Home</h1>)
+// class Form extends React.Component {
+//   state = {dirty: false}
+//   setDirty = () => this.setState({dirty: true})
+//
+//   render() {
+//     return (
+//       <div>
+//         <h1>Form </h1>
+//         <input type="text" onInput={this.setDirty} />
+//         <Prompt
+//           when={this.state.dirty}
+//           message="Data will be lost!"
+//         />
+//       </div>
+//     )
+//   }
+// }
+//
+// const App = () => (
+//   <Router>
+//     <div>
+//       <Link to="/">Home</Link>
+//       <Link to="/form">Form</Link>
+//       <Route exact path="/" component={Home}/>
+//       <Route path="/form" component={Form}/>
+//     </div>
+//   </Router>
+// )
+
+
+
+// const loggedin = true;
+// const Links = () => (
+//   <nav>
+//     <Link to="/">Home</Link>
+//     <Link to="/old/123">Old</Link>
+//     <Link to="/new/456">New</Link>
+//     <Link to="/protected">Protected</Link>
+//   </nav>
+// )
+//
+//
+//
 // // Redirect must be nested within a switch otherwise it will render
 // // A more common use for Redirect is to override an existing route
 // // now the from can be removed from the redirect
