@@ -51,6 +51,20 @@ const HashRouterApp = () => (
 )
 
 
+// entirely in-memory -- mostly useful for testing
+// the components will render but the route URL will not change
+// this makes it ideal for testing as it is not dependent on the actual URL in an actual broswer
+// initialEntries can be passed our current history stack in our virtual browser
+// initalIndex sets the position in the history stack
+const MemoryRouterApp = () => (
+  <MemoryRouter
+    initialEntries={['/', '/about']}
+    initialIndex={1}
+    >
+    <LinksRoutes />
+  </MemoryRouter>
+)
+
 export default StaticRouterApp;
 
 
