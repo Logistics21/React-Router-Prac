@@ -65,6 +65,17 @@ const MemoryRouterApp = () => (
   </MemoryRouter>
 )
 
+
+// StaticRouter is primarily used for server-side rendering
+// Similar to MemoryRouter you can set StaticRouter's location manually
+// the context prop represents the URL that your HTTP server would have received
+const StaticRouterApp = () => (
+  <StaticRouter location="/about" context={{}}>
+    <LinksRoutes />
+  </StaticRouter>
+)
+
+
 export default StaticRouterApp;
 
 
