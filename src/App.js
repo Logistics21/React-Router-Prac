@@ -38,6 +38,19 @@ const BrowserRouterApp = () => (
   </Router>
 )
 
+
+// one option unique to HashRouter is hashType prop
+// It's default is slash
+// hashbang is used for SEO
+const HashRouterApp = () => (
+  //  <HashRouter hashType="slash">
+  //  <HashRouter hashType="noslash">
+  <HashRouter hashType="hashbang">
+    <LinksRoutes />
+  </HashRouter>
+)
+
+
 export default StaticRouterApp;
 
 
